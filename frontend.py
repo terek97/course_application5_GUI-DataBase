@@ -1,15 +1,31 @@
 from tkinter import *
 import backend
 
+
+def view_all():
+    list1.delete(0, END)
+    for row in backend.view():
+        list1.insert(END, row)
+
+def search():
+    list1.delete(0, END)
+    for row in backend.search(title_text.get(), author_text.get(), year_text.get(), isbn_text.get()):
+        list1.insert(END, row)
+    e1.delete(0, END)
+    e2.delete(0, END)
+    e3.delete(0, END)
+    e4.delete(0, END)
+
+
 window = Tk()
 
 l1 = Label(window, text="Title")
 l1.grid(row=0, column=0)
 
-l2 = Label(window, text="Year")
+l2 = Label(window, text="Author")
 l2.grid(row=0, column=2)
 
-l3 = Label(window, text="Author")
+l3 = Label(window, text="Year")
 l3.grid(row=1, column=0)
 
 l4 = Label(window, text="ISBN")
@@ -52,10 +68,10 @@ sb1.configure(command=list1.yview)
 """
 
 
-b1 = Button(window, text="View all", width=13)
+b1 = Button(window, text="View all", width=13, command=view_all)
 b1.grid(row=2, column=3)
 
-b2 = Button(window, text="Search entry", width=13)
+b2 = Button(window, text="Search entry", width=13, command=search) 
 b2.grid(row=3, column=3)
 
 b3 = Button(window, text="Add entry", width=13)

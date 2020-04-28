@@ -23,6 +23,7 @@ def view():
     conn.close()
     return rows
 
+
 def search(title="", author="", year="", isbn=""):
     conn=sqlite3.connect("books.db")
     cur=conn.cursor()
@@ -48,8 +49,9 @@ def update(id, title, author, year, isbn):
     conn.close()
 
 connect()
+#insert("Martin Iden", "J. London", 1962, 753951)
 # update(1, 'J.OR.', '1984', 2010, 12345678)
-# print(view())
+#print(view())
 
 
 
